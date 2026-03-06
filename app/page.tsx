@@ -100,9 +100,9 @@ export default async function HomePage() {
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
         <div 
           className="flex gap-12 animate-marquee whitespace-nowrap"
-          style={{ '--duration': '40s', '--gap': '3rem' } as React.CSSProperties}
+          style={{ '--duration': '30s', '--gap': '3rem' } as React.CSSProperties}
         >
-          {[...categories, ...categories].map((cat, i) => (
+          {[...categories, ...categories, ...categories].map((cat, i) => (
             <span key={i} className="text-xl font-bold text-muted-foreground/40 hover:text-primary transition-colors cursor-default">
               {cat.toUpperCase()}
             </span>
