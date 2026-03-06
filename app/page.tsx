@@ -11,194 +11,221 @@ import {
   Users,
   BarChart3,
   QrCode,
+  Mail,
+  CheckCircle2,
 } from "lucide-react";
 
-export default function HomePage() {
 
+export default async function HomePage() {
   const featuredEvents = mockFeaturedEvents;
 
   return (
-      <div className="flex flex-col">
-        {/* Hero */}
-        <section className="relative overflow-hidden bg-background">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--primary)_0%,transparent_50%)] opacity-[0.04]" />
-          <div className="relative mx-auto max-w-7xl px-4 py-24 lg:py-36">
-            <div className="mx-auto max-w-3xl text-center">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-sm text-muted-foreground">
-                <Zap className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-                Trusted by 10,000+ event organizers
-              </div>
-              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl text-balance">
-                Events that move people,{" "}
-                <span className="text-primary">tickets that just work</span>
-              </h1>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                AxamEvent is the modern event platform for organizers and
-                attendees. Create, discover, and manage events with secure
-                ticketing powered by Stripe.
-              </p>
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-                <Button size="lg" asChild className="h-12 px-8 text-base">
-                  <Link href="/events">
-                    Browse Events
-                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </Button>
-                <Button
-                    variant="outline"
-                    size="lg"
-                    asChild
-                    className="h-12 px-8 text-base"
-                >
-                  <Link href="/sign-up?role=organizer">Start Organizing</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
+    <div className="flex flex-col">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-background py-24 lg:py-36">
+        {/* LEARN: Animated Radial Gradient. 
+            The 'animate-pulse' on a low opacity layer creates a breathing effect 
+            without being distracting to the user. */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--primary)_0%,transparent_50%)] opacity-[0.05] animate-pulse" />
+          <div className="absolute -top-[10%] -left-[10%] h-[40%] w-[40%] rounded-full bg-primary/10 blur-[120px]" />
+          <div className="absolute top-[20%] -right-[10%] h-[30%] w-[30%] rounded-full bg-primary/5 blur-[100px]" />
+        </div>
 
-        {/* Featured Events */}
-        <section className="py-20 bg-muted/50">
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="flex items-center justify-between mb-10">
-              <div>
-                <h2 className="text-3xl font-bold text-foreground">
-                  Upcoming Events
-                </h2>
-                <p className="mt-2 text-muted-foreground">
-                  Discover what{"'"}s happening near you
-                </p>
-              </div>
-              <Button variant="outline" asChild>
-                <Link href="/events">
-                  View All
-                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </Link>
-              </Button>
+        <div className="relative mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
+              <Zap className="h-3.5 w-3.5" aria-hidden="true" />
+              Next-Gen Event Management
             </div>
-            {featuredEvents.length > 0 ? (
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {featuredEvents.map((event) => (
-                      <EventCard key={event.id} event={event} />
-                  ))}
-                </div>
-            ) : (
-                <Card className="border border-dashed border-border bg-muted/20">
-                  <CardContent className="flex flex-col items-center justify-center py-16 text-center">
-                    <Calendar
-                        className="h-12 w-12 text-muted-foreground/50 mb-4"
-                        aria-hidden="true"
-                    />
-                    <h3 className="text-lg font-semibold text-foreground">
-                      No events yet
-                    </h3>
-                    <p className="mt-1 text-sm text-muted-foreground max-w-sm">
-                      Be the first to create an event on AxamEvent.
-                    </p>
-                    <Button className="mt-6" asChild>
-                      <Link href="/events/create">Create Your First Event</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-            )}
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="border-t border-border py-20">
-          <div className="mx-auto max-w-3xl px-4 text-center">
-            <h2 className="text-3xl font-bold text-foreground text-balance">
-              Ready to create your next event?
-            </h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
-              Join thousands of organizers who trust AxamEvent for their events.
-              Get started for free.
+            <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl lg:text-7xl text-balance">
+              Events that move people,{" "}
+              <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                tickets that just work
+              </span>
+            </h1>
+            <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              AxamEvent is the modern platform for organizers and attendees. 
+              Secure ticketing, AI-powered descriptions, and seamless check-ins.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button size="lg" asChild className="h-12 px-8">
-                <Link href="/sign-up?role=organizer">
-                  Start for Free
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Button size="lg" asChild className="h-12 px-8 text-base shadow-lg shadow-primary/20">
+                <Link href="/events">
+                  Browse Events
                   <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+                className="h-12 px-8 text-base backdrop-blur-sm"
+              >
+                <Link href="/sign-up?role=organizer">Start Organizing</Link>
+              </Button>
+            </div>
+            
+            <div className="mt-12 flex items-center justify-center gap-8 grayscale opacity-50">
+              {/* Mock Social Proof */}
+              <span className="text-sm font-semibold tracking-widest uppercase">Trusted By</span>
+              <div className="flex gap-6 text-xl font-bold italic">
+                <span>EVENTLY</span>
+                <span>TICKETX</span>
+                <span>CONFERA</span>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Features */}
-        <section className="border-t border-border bg-muted/30 py-20">
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="text-center mb-14">
-              <h2 className="text-3xl font-bold text-foreground text-balance">
-                Everything you need to run events
+      {/* Featured Events */}
+      <section className="py-24 bg-muted/30">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <h2 className="text-3xl font-bold text-foreground">
+                Upcoming Events
               </h2>
-              <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
-                From small meetups to large conferences, AxamEvent provides all
-                the tools you need.
+              <p className="mt-2 text-muted-foreground">
+                Hand-picked experiences happening soon
               </p>
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                {
-                  icon: Calendar,
-                  title: "Event Management",
-                  description:
-                      "Create and manage events with ease. Set dates, venues, pricing, and capacity all in one place.",
-                },
-                {
-                  icon: Shield,
-                  title: "Secure Payments",
-                  description:
-                      "Powered by Stripe Checkout for PCI-compliant, secure ticket purchases with instant confirmation.",
-                },
-                {
-                  icon: QrCode,
-                  title: "QR Ticket System",
-                  description:
-                      "Each ticket gets a unique QR code for fast, contactless check-in at the door.",
-                },
-                {
-                  icon: Users,
-                  title: "Attendee Management",
-                  description:
-                      "Track RSVPs, manage guest lists, and communicate with attendees through the dashboard.",
-                },
-                {
-                  icon: BarChart3,
-                  title: "Real-time Analytics",
-                  description:
-                      "Monitor ticket sales, revenue, and check-in rates with live dashboard metrics.",
-                },
-                {
-                  icon: Zap,
-                  title: "Workflow Automation",
-                  description:
-                      "Connect with n8n and OpenAI for automated emails, AI-generated descriptions, and smart workflows.",
-                },
-              ].map((feature) => (
-                  <Card
-                      key={feature.title}
-                      className="border border-border bg-card"
-                  >
-                    <CardContent className="flex flex-col gap-3 p-6">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                        <feature.icon
-                            className="h-5 w-5 text-primary"
-                            aria-hidden="true"
-                        />
-                      </div>
-                      <h3 className="font-semibold text-card-foreground">
-                        {feature.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </CardContent>
-                  </Card>
+            <Button variant="ghost" asChild className="group">
+              <Link href="/events">
+                View All
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
+          {featuredEvents.length > 0 ? (
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {featuredEvents.map((event) => (
+                <EventCard key={event.id} event={event} />
               ))}
             </div>
+          ) : (
+            <Card className="border border-dashed border-border bg-background/50 backdrop-blur-sm">
+              <CardContent className="flex flex-col items-center justify-center py-20 text-center">
+                <Calendar className="h-16 w-16 text-muted-foreground/20 mb-6" aria-hidden="true" />
+                <h3 className="text-xl font-semibold text-foreground">No events found</h3>
+                <p className="mt-2 text-muted-foreground max-w-sm">
+                  Be the trendsetter. Create the first event in your area.
+                </p>
+                <Button className="mt-8" asChild>
+                  <Link href="/events/create">Create Your First Event</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-24 border-y border-border">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-foreground">
+              Powerful tools for every organizer
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-lg">
+              Everything you need to sell tickets, manage attendees, and grow your audience.
+            </p>
           </div>
-        </section>
-      </div>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                icon: Shield,
+                title: "Stripe Secured",
+                description: "Enterprise-grade payment security for every transaction.",
+              },
+              {
+                icon: QrCode,
+                title: "Instant QR Entry",
+                description: "Scan and go. Fast contactless check-in for all attendees.",
+              },
+              {
+                icon: BarChart3,
+                title: "Live Analytics",
+                description: "Track your sales and revenue in real-time from your dashboard.",
+              },
+            ].map((feature) => (
+              <div key={feature.title} className="group relative p-8 rounded-2xl border border-border bg-card transition-all hover:shadow-xl hover:-translate-y-1">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <feature.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-24 relative overflow-hidden ">
+        <div className="absolute inset-0 bg-muted/30 -z-10" />
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="relative overflow-hidden rounded-3xl bg-foreground/77 px-8 py-16 shadow-2xl sm:px-16 md:py-20">
+            <div className="relative z-10 mx-auto max-w-2xl text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-background sm:text-4xl">
+                Stay in the loop
+              </h2>
+              <p className="mt-4 text-lg text-background/70">
+                Get notified about the best events happening near you and exclusive organizer tips.
+              </p>
+              <form className="mt-10 flex flex-col gap-y-4 sm:flex-row sm:gap-x-4 max-w-md mx-auto">
+                <div className="flex-auto min-w-0">
+                  <label htmlFor="email-address" className="sr-only">Email address</label>
+                  <input
+                    id="email-address"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    className="w-full rounded-xl border-0 bg-background/10 px-4 py-3 text-background shadow-sm ring-1 ring-inset ring-background/20 focus:ring-2 focus:ring-inset focus:ring-primary/50 sm:text-sm"
+                    placeholder="Enter your email"
+                  />
+                </div>
+                <Button type="button" className="bg-background text-foreground hover:bg-background/90 px-8 py-3 rounded-xl font-semibold">
+                  Subscribe
+                </Button>
+              </form>
+              <div className="mt-6 flex items-center justify-center gap-x-3 text-sm text-background/50">
+                <CheckCircle2 className="h-4 w-4" />
+                <span>No spam, just great events.</span>
+              </div>
+            </div>
+            {/* Background pattern for newsletter */}
+            <svg viewBox="0 0 1024 1024" className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]" aria-hidden="true">
+              <circle cx="512" cy="512" r="512" fill="url(#gradient)" fillOpacity="0.15" />
+              <defs>
+                <radialGradient id="gradient">
+                  <stop stopColor="white" />
+                  <stop offset="1" stopColor="white" />
+                </radialGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-24">
+        <div className="mx-auto max-w-3xl px-4 text-center">
+          <h2 className="text-4xl font-bold tracking-tight text-foreground">
+            Ready to host your own?
+          </h2>
+          <p className="mt-6 text-xl text-muted-foreground">
+            Join 10,000+ organizers making memories with AxamEvent.
+          </p>
+          <div className="mt-10 flex items-center justify-center gap-x-6">
+            <Button size="lg" className="rounded-full px-10">Get Started Now</Button>
+            <Link href="/about" className="text-sm font-semibold leading-6 text-foreground">
+              Learn more <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
