@@ -13,8 +13,37 @@ import {
   QrCode,
   Mail,
   CheckCircle2,
+  Star,
 } from "lucide-react";
 
+const categories = [
+  "Conferences", "Workshops", "Concerts", "Networking", "Tech", 
+  "Food & Drink", "Health", "Art", "Sports", "Charity", "Comedy"
+];
+
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "Tech Conference Organizer",
+    content: "AxamEvent transformed how we handle ticketing. The QR check-in is incredibly fast!",
+    avatar: "SJ",
+    rating: 5
+  },
+  {
+    name: "Michael Chen",
+    role: "Workshop Facilitator",
+    content: "The Stripe integration is seamless. I got my payouts faster than any other platform.",
+    avatar: "MC",
+    rating: 5
+  },
+  {
+    name: "Emma Davis",
+    role: "Music Festival Lead",
+    content: "The dashboard gives me real-time insights that help us manage the crowd better.",
+    avatar: "ED",
+    rating: 5
+  }
+];
 
 export default async function HomePage() {
   const featuredEvents = mockFeaturedEvents;
@@ -23,9 +52,6 @@ export default async function HomePage() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background py-24 lg:py-36">
-        {/* LEARN: Animated Radial Gradient. 
-            The 'animate-pulse' on a low opacity layer creates a breathing effect 
-            without being distracting to the user. */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--primary)_0%,transparent_50%)] opacity-[0.05] animate-pulse" />
           <div className="absolute -top-[10%] -left-[10%] h-[40%] w-[40%] rounded-full bg-primary/10 blur-[120px]" />
@@ -64,22 +90,28 @@ export default async function HomePage() {
                 <Link href="/sign-up?role=organizer">Start Organizing</Link>
               </Button>
             </div>
-            
-            <div className="mt-12 flex items-center justify-center gap-8 grayscale opacity-50">
-              {/* Mock Social Proof */}
-              <span className="text-sm font-semibold tracking-widest uppercase">Trusted By</span>
-              <div className="flex gap-6 text-xl font-bold italic">
-                <span>EVENTLY</span>
-                <span>TICKETX</span>
-                <span>CONFERA</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
+      {/* Category Marquee */}
+      <section className="py-12 border-y border-border bg-muted/20 overflow-hidden relative">
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+        <div 
+          className="flex gap-12 animate-marquee whitespace-nowrap"
+          style={{ '--duration': '40s', '--gap': '3rem' } as React.CSSProperties}
+        >
+          {[...categories, ...categories].map((cat, i) => (
+            <span key={i} className="text-xl font-bold text-muted-foreground/40 hover:text-primary transition-colors cursor-default">
+              {cat.toUpperCase()}
+            </span>
+          ))}
+        </div>
+      </section>
+
       {/* Featured Events */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-24">
         <div className="mx-auto max-w-7xl px-4">
           <div className="flex items-center justify-between mb-12">
             <div>
@@ -121,7 +153,7 @@ export default async function HomePage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-24 border-y border-border">
+      <section className="py-24 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-foreground">
@@ -161,11 +193,44 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-24 relative overflow-hidden ">
-        <div className="absolute inset-0 bg-muted/30 -z-10" />
+      {/* Testimonials */}
+      <section className="py-24 border-b border-border">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="relative overflow-hidden rounded-3xl bg-foreground/77 px-8 py-16 shadow-2xl sm:px-16 md:py-20">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-foreground">What organizers are saying</h2>
+            <p className="mt-4 text-muted-foreground">Join thousands of happy organizers worldwide.</p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <Card key={i} className="bg-background border-border shadow-sm">
+                <CardContent className="p-8">
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(t.rating)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <p className="text-foreground leading-relaxed mb-6 italic">"{t.content}"</p>
+                  <div className="flex items-center gap-4">
+                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary">
+                      {t.avatar}
+                    </div>
+                    <div>
+                      <div className="font-bold text-sm">{t.name}</div>
+                      <div className="text-xs text-muted-foreground">{t.role}</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-primary/5 -z-10" />
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="relative overflow-hidden rounded-3xl bg-foreground px-8 py-16 shadow-2xl sm:px-16 md:py-20">
             <div className="relative z-10 mx-auto max-w-2xl text-center">
               <h2 className="text-3xl font-bold tracking-tight text-background sm:text-4xl">
                 Stay in the loop
@@ -182,7 +247,7 @@ export default async function HomePage() {
                     type="email"
                     autoComplete="email"
                     required
-                    className="w-full rounded-xl border-0 bg-background/10 px-4 py-3 text-background shadow-sm ring-1 ring-inset ring-background/20 focus:ring-2 focus:ring-inset focus:ring-primary/50 sm:text-sm"
+                    className="w-full rounded-xl border-0 bg-background/10 px-4 py-3 text-background shadow-sm ring-1 ring-inset ring-background/20 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -195,7 +260,6 @@ export default async function HomePage() {
                 <span>No spam, just great events.</span>
               </div>
             </div>
-            {/* Background pattern for newsletter */}
             <svg viewBox="0 0 1024 1024" className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]" aria-hidden="true">
               <circle cx="512" cy="512" r="512" fill="url(#gradient)" fillOpacity="0.15" />
               <defs>
