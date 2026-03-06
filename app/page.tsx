@@ -57,6 +57,74 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Featured Events */}
+        <section className="py-20 bg-muted/50">
+          <div className="mx-auto max-w-7xl px-4">
+            <div className="flex items-center justify-between mb-10">
+              <div>
+                <h2 className="text-3xl font-bold text-foreground">
+                  Upcoming Events
+                </h2>
+                <p className="mt-2 text-muted-foreground">
+                  Discover what{"'"}s happening near you
+                </p>
+              </div>
+              <Button variant="outline" asChild>
+                <Link href="/events">
+                  View All
+                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
+            {featuredEvents.length > 0 ? (
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {featuredEvents.map((event) => (
+                      <EventCard key={event.id} event={event} />
+                  ))}
+                </div>
+            ) : (
+                <Card className="border border-dashed border-border bg-muted/20">
+                  <CardContent className="flex flex-col items-center justify-center py-16 text-center">
+                    <Calendar
+                        className="h-12 w-12 text-muted-foreground/50 mb-4"
+                        aria-hidden="true"
+                    />
+                    <h3 className="text-lg font-semibold text-foreground">
+                      No events yet
+                    </h3>
+                    <p className="mt-1 text-sm text-muted-foreground max-w-sm">
+                      Be the first to create an event on AxamEvent.
+                    </p>
+                    <Button className="mt-6" asChild>
+                      <Link href="/events/create">Create Your First Event</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+            )}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="border-t border-border py-20">
+          <div className="mx-auto max-w-3xl px-4 text-center">
+            <h2 className="text-3xl font-bold text-foreground text-balance">
+              Ready to create your next event?
+            </h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Join thousands of organizers who trust AxamEvent for their events.
+              Get started for free.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Button size="lg" asChild className="h-12 px-8">
+                <Link href="/sign-up?role=organizer">
+                  Start for Free
+                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
         {/* Features */}
         <section className="border-t border-border bg-muted/30 py-20">
           <div className="mx-auto max-w-7xl px-4">
@@ -128,74 +196,6 @@ export default function HomePage() {
                     </CardContent>
                   </Card>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Featured Events */}
-        <section className="py-20">
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="flex items-center justify-between mb-10">
-              <div>
-                <h2 className="text-3xl font-bold text-foreground">
-                  Upcoming Events
-                </h2>
-                <p className="mt-2 text-muted-foreground">
-                  Discover what{"'"}s happening near you
-                </p>
-              </div>
-              <Button variant="outline" asChild>
-                <Link href="/events">
-                  View All
-                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </Link>
-              </Button>
-            </div>
-            {featuredEvents.length > 0 ? (
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {featuredEvents.map((event) => (
-                      <EventCard key={event.id} event={event} />
-                  ))}
-                </div>
-            ) : (
-                <Card className="border border-dashed border-border bg-muted/20">
-                  <CardContent className="flex flex-col items-center justify-center py-16 text-center">
-                    <Calendar
-                        className="h-12 w-12 text-muted-foreground/50 mb-4"
-                        aria-hidden="true"
-                    />
-                    <h3 className="text-lg font-semibold text-foreground">
-                      No events yet
-                    </h3>
-                    <p className="mt-1 text-sm text-muted-foreground max-w-sm">
-                      Be the first to create an event on AxamEvent.
-                    </p>
-                    <Button className="mt-6" asChild>
-                      <Link href="/events/create">Create Your First Event</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-            )}
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="border-t border-border bg-muted/30 py-20">
-          <div className="mx-auto max-w-3xl px-4 text-center">
-            <h2 className="text-3xl font-bold text-foreground text-balance">
-              Ready to create your next event?
-            </h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
-              Join thousands of organizers who trust AxamEvent for their events.
-              Get started for free.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button size="lg" asChild className="h-12 px-8">
-                <Link href="/sign-up?role=organizer">
-                  Start for Free
-                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </Link>
-              </Button>
             </div>
           </div>
         </section>
