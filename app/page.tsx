@@ -51,7 +51,7 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-background py-24 lg:py-36">
+      <section className="relative overflow-hidden bg-background py-11 lg:py-14">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--primary)_0%,transparent_50%)] opacity-[0.05] animate-pulse" />
           <div className="absolute -top-[10%] -left-[10%] h-[40%] w-[40%] rounded-full bg-primary/10 blur-[120px]" />
@@ -65,13 +65,13 @@ export default async function HomePage() {
               Next-Gen Event Management
             </div>
             <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl lg:text-7xl text-balance">
-              Events that move people,{" "}
-              <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                tickets that just work
+              AXAM Event,{" "}
+              <span className="bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                The all-in-one platform for organizers who value their guests.
               </span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              AxamEvent is the modern platform for organizers and attendees. 
+              AxamEvent is the modern platform for organizers and attendees.
               Secure ticketing, AI-powered descriptions, and seamless check-ins.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -96,11 +96,11 @@ export default async function HomePage() {
 
       {/* Category Marquee */}
       <section className="py-12 border-y border-border bg-muted/20 overflow-hidden relative">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-linear-to-r from-background to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-linear-to-l from-background to-transparent z-10" />
         <div 
           className="flex gap-12 animate-marquee whitespace-nowrap"
-          style={{ '--duration': '30s', '--gap': '3rem' } as React.CSSProperties}
+          style={{ '--duration': '21s', '--gap': '3rem' } as React.CSSProperties}
         >
           {[...categories, ...categories, ...categories].map((cat, i) => (
             <span key={i} className="text-xl font-bold text-muted-foreground/40 hover:text-primary transition-colors cursor-default">
@@ -111,7 +111,7 @@ export default async function HomePage() {
       </section>
 
       {/* Featured Events */}
-      <section className="py-24">
+      <section className="py-11">
         <div className="mx-auto max-w-7xl px-4">
           <div className="flex items-center justify-between mb-12">
             <div>
@@ -122,7 +122,7 @@ export default async function HomePage() {
                 Hand-picked experiences happening soon
               </p>
             </div>
-            <Button variant="ghost" asChild className="group">
+            <Button variant="outline" asChild className="group">
               <Link href="/events">
                 View All
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -153,7 +153,7 @@ export default async function HomePage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-11 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-foreground">
@@ -167,7 +167,7 @@ export default async function HomePage() {
             {[
               {
                 icon: Shield,
-                title: "Stripe Secured",
+                title: "Secured payment",
                 description: "Enterprise-grade payment security for every transaction.",
               },
               {
@@ -194,7 +194,7 @@ export default async function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 border-b border-border">
+      <section className="py-11 border-b border-border">
         <div className="mx-auto max-w-7xl px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-foreground">What organizers are saying</h2>
@@ -209,7 +209,7 @@ export default async function HomePage() {
                       <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                     ))}
                   </div>
-                  <p className="text-foreground leading-relaxed mb-6 italic">"{t.content}"</p>
+                  <p className="text-foreground leading-relaxed mb-6 italic">&quot;{t.content}&quot;</p>
                   <div className="flex items-center gap-4">
                     <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary">
                       {t.avatar}
@@ -227,8 +227,8 @@ export default async function HomePage() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5 -z-10" />
+      <section className="py-22 relative overflow-hidden">
+        <div className="absolute inset-0 bg-muted/33 -z-10" />
         <div className="mx-auto max-w-7xl px-4">
           <div className="relative overflow-hidden rounded-3xl bg-foreground px-8 py-16 shadow-2xl sm:px-16 md:py-20">
             <div className="relative z-10 mx-auto max-w-2xl text-center">

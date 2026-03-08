@@ -17,7 +17,8 @@ export const metadata: Metadata = {
     },
     description:
         "The modern event platform for organizers and attendees. Discover, create, and manage events with secure ticketing powered by Stripe.",
-    keywords: ["events", "tickets", "conferences", "meetups", "organizer"],
+    keywords: ["events", "tickets", "conferences", "meetups", "organizer", "Workshops", "Concerts", "Networking", "Tech",
+        "Food & Drink", "Health", "Art", "Sports", "Charity", "Comedy"],
 };
 
 export const viewport: Viewport = {

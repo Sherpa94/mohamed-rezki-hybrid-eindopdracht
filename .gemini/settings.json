@@ -1,0 +1,23 @@
+{
+  "general": {
+    "previewFeatures": true,
+    "model": "gemini-3.1-pro"
+  },
+  "agent": {
+    "autoApproveTools": ["read_file", "google_search"],
+    "preferredLanguage": "TypeScript",
+    "canExecuteCommands": true
+  },
+  "projectContext": {
+    "techStack": ["Next.js 16.1.x","App Router", "Tailwind", "pnpm", "Stripe", "Drizzle ORM", "shadcn/ui"],
+    "understandingMode": "architectural",
+    "depth": "deep",
+    "includeDirectories": ["C:/projects/EventBriteClone"],
+    "documentationLinks": [
+      "https://nextjs.org/docs",
+      "https://stripe.com/docs/api",
+      "https://ui.shadcn.com/",
+      "https://24-hybrid-apps-programmeren-thomasm.vercel.app"
+    ]
+  }
+}
