@@ -6,10 +6,12 @@ import { createNavigation } from 'next-intl/navigation';
  * and other routing-aware parts of your app to ensure everyone knows
  * which languages are supported and what the default language is.
  */
-export const routing = defineRouting({
-  // A list of all locales that are supported
-  locales: ['en', 'fr'],
+// A list of all locales that are supported
+export const locales = ['en', 'fr'] as const;
+export type Locale = (typeof locales)[number];
 
+export const routing = defineRouting({
+  locales,
   // Used when no locale matches
   defaultLocale: 'en'
 });
