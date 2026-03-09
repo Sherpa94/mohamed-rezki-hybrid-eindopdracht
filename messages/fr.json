@@ -1,6 +1,15 @@
 {
-  "Index": {
+  "Home": {
+    "slogan": "Nouvelle génération de gestion d’événements",
     "title": "Bienvenue sur AxamEvent",
-    "description": "La meilleure plateforme pour vos événements."
+    "attraction": "La plateforme tout-en-un pour les organisateurs qui apprécient leurs invités.",
+    "description": "AxamEvent est la plateforme moderne pour les organisateurs et les participants. \n Billetterie sécurisée, descriptions alimentées par l’IA et enregistrements fluides.",
+    "Browse Events": "parcourir les événements",
+    "Start Organizing": "commencer à organiser",
+    "Upcoming Events": "événements à venir",
+    "Hand-picked experiences happening soon": "Des expériences triées sur le volet qui se déroulent bientôt",
+    "View All": "voir tous",
+    "Powerful tools for every organizer": "Des outils efficaces pour chaque organisateur",
+    "Everything you need to sell tickets, manage attendees, and grow your audience": "Toutes les informations dont vous avez besoin pour vendre des billets, gérer les participants et élargir votre audience"
   }
 }

@@ -1,6 +1,15 @@
 {
-  "Index": {
+  "Home": {
+    "slogan": "Next-Gen Event Management",
     "title": "Welcome to AxamEvent",
-    "description": "The best platform for your events."
+    "attraction": "The all-in-one platform for organizers who value their guests.",
+    "description": "AxamEvent is the modern platform for organizers and attendees. \n Secure ticketing, AI-powered descriptions, and seamless check-ins.",
+    "Browse Events": "Browse Events",
+    "Start Organizing": "Start Organizing",
+    "Upcoming Events": "Upcoming Events",
+    "Hand-picked experiences happening soon": "Hand-picked experiences happening soon",
+    "View All": "View All",
+    "Powerful tools for every organizer": "Powerful tools for every organizer",
+    "Everything you need to sell tickets, manage attendees, and grow your audience": "Everything you need to sell tickets, manage attendees, and grow your audience"
   }
 }
