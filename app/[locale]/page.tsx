@@ -2,17 +2,15 @@ import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {Card, CardContent} from "@/components/ui/card";
 import {EventCard} from "@/components/event-card";
-import {mockFeaturedEvents} from "@/lib/mock-data";
+import {getFeaturedEvents} from "@/lib/db/queries";
 import {getTranslations} from 'next-intl/server';
 import {
   ArrowRight,
   Calendar,
   Shield,
   Zap,
-  Users,
   BarChart3,
   QrCode,
-  Mail,
   CheckCircle2,
   Star,
 } from "lucide-react";
@@ -45,9 +43,14 @@ const testimonials = [
         rating: 5
     }
 ];
-// SERVER COMPONENT — uses async getTranslations
+
+/**
+ * // SERVER COMPONENT — fetches data directly, no interactivity
+ * // LEARN: In Next.js 16, async components can await database queries directly.
+ */
 export default async function HomePage() {
-    const featuredEvents = mockFeaturedEvents;
+    // LEARN: Fetching real data from the database.
+    const featuredEvents = await getFeaturedEvents(3);
 
     // LEARN: 'getTranslations' is used in Server Components to fetch
     // localized strings. 'Home' is the key in our JSON files.
