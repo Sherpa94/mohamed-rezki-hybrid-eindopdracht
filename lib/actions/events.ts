@@ -79,7 +79,7 @@ export async function createEvent(prevState: FormState, formData: FormData) {
       slug,
       date: new Date(date),
       price: Math.round(price * 100), // Convert to cents for the database
-      organizerId: mockOrganizerId as any, // Cast for now, will fix with real ID
+      organizerId: mockOrganizerId as string, // Cast for now, will fix with real ID
     });
 
   } catch (error) {
