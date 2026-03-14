@@ -69,6 +69,26 @@ export async function getAllEvents() {
 }
 
 /**
+ * // LEARN: Fetching events owned by a specific organizer.
+ * This is the core query for the Organizer Dashboard.
+ */
+export async function getEventsByOrganizer(organizerId: string) {
+  try {
+    const results = await db.query.events.findMany({
+      where: (events, { eq }) => eq(events.organizerId, organizerId),
+      orderBy: [desc(events.createdAt)],
+      // We don't necessarily need the organizer relation here since 
+      // we already know who the organizer is (the current user).
+    });
+
+    return results;
+  } catch (error) {
+    console.error('Failed to fetch organizer events:', error);
+    return [];
+  }
+}
+
+/**
  * // LEARN: Inferred TypeScript types from our schema.
  * This ensures the UI is always in sync with our DB structure.
  */

@@ -26,5 +26,22 @@
     "description": "Découvrez tous les événements et expériences à venir.",
     "No events found": "Aucun événement trouvé",
     "Empty Description": "Revenez plus tard ou parcourez d'autres catégories."
+  },
+  "Dashboard": {
+    "title": "Tableau de bord de l'organisateur",
+    "description": "Gérez vos événements et suivez vos ventes.",
+    "My Events": "Mes événements",
+    "Create New": "Créer nouveau",
+    "Analytics": "Analyses",
+    "Total Events": "Total événements",
+    "Upcoming": "À venir",
+    "Past": "Passés",
+    "Table": {
+      "Title": "Titre",
+      "Date": "Date",
+      "Status": "Statut",
+      "Price": "Prix",
+      "Actions": "Actions"
+    }
   }
 }

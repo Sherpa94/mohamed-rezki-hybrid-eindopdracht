@@ -26,5 +26,22 @@
     "description": "Discover all upcoming events and experiences.",
     "No events found": "No events found",
     "Empty Description": "Check back later or browse other categories."
+  },
+  "Dashboard": {
+    "title": "Organizer Dashboard",
+    "description": "Manage your events and track your sales.",
+    "My Events": "My Events",
+    "Create New": "Create New",
+    "Analytics": "Analytics",
+    "Total Events": "Total Events",
+    "Upcoming": "Upcoming",
+    "Past": "Past",
+    "Table": {
+      "Title": "Title",
+      "Date": "Date",
+      "Status": "Status",
+      "Price": "Price",
+      "Actions": "Actions"
+    }
   }
 }
