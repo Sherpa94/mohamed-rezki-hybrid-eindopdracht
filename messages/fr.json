@@ -20,5 +20,11 @@
     "Share Event": "Partager l'événement",
     "Secure Checkout": "Paiement sécurisé",
     "Checkout Description": "Toutes les transactions sont cryptées et traitées en toute sécurité par Stripe."
+  },
+  "Browse": {
+    "title": "Tous les événements",
+    "description": "Découvrez tous les événements et expériences à venir.",
+    "No events found": "Aucun événement trouvé",
+    "Empty Description": "Revenez plus tard ou parcourez d'autres catégories."
   }
 }

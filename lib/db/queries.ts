@@ -47,6 +47,26 @@ export async function getEventBySlug(slug: string) {
   }
 }
 
+/**
+ * // LEARN: Fetching all upcoming events.
+ * We can easily extend this later with search or category filters.
+ */
+export async function getAllEvents() {
+  try {
+    const results = await db.query.events.findMany({
+      where: gte(events.date, new Date()),
+      orderBy: [asc(events.date)],
+      with: {
+        organizer: true,
+      },
+    });
+
+    return results;
+  } catch (error) {
+    console.error('Failed to fetch all events:', error);
+    return [];
+  }
+}
 
 /**
  * // LEARN: Inferred TypeScript types from our schema.

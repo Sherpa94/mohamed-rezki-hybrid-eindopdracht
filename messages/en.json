@@ -20,5 +20,11 @@
     "Share Event": "Share Event",
     "Secure Checkout": "Secure Checkout",
     "Checkout Description": "All transactions are encrypted and processed securely by Stripe."
+  },
+  "Browse": {
+    "title": "All Events",
+    "description": "Discover all upcoming events and experiences.",
+    "No events found": "No events found",
+    "Empty Description": "Check back later or browse other categories."
   }
 }
