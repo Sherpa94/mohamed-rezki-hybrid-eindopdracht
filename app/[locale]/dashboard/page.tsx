@@ -20,9 +20,9 @@ import { Calendar, Plus, BarChart3, Ticket, MoreHorizontal } from "lucide-react"
 import { Badge } from "@/components/ui/badge";
 
 export default async function DashboardPage() {
-  // LEARN: Using your real Supabase User ID for now.
+  // LEARN: Using your real Supabase User ID found in diagnosis.
   // We'll replace this with auth.getSession() later.
-  const userId = "fdd4bb58-02a7-4d92-a334-00433edf9f0d";
+  const userId = "69f1147b-a88b-471d-b233-28eb2602c2e9";
   
   const events = await getEventsByOrganizer(userId);
   const t = await getTranslations("Dashboard");
@@ -124,7 +124,7 @@ export default async function DashboardPage() {
             </Table>
           ) : (
             <div className="py-12 text-center">
-              <p className="text-muted-foreground">You haven't created any events yet.</p>
+              <p className="text-muted-foreground">You haven&apos;t created any events yet.</p>
               <Button variant="link" asChild>
                 <Link href="/events/create">Create your first event</Link>
               </Button>
