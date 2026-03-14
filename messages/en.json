@@ -11,5 +11,14 @@
     "View All": "View All",
     "Powerful tools for every organizer": "Powerful tools for every organizer",
     "Everything you need to sell tickets, manage attendees, and grow your audience": "Everything you need to sell tickets, manage attendees, and grow your audience"
+  },
+  "Details": {
+    "About this event": "About this event",
+    "Organized by": "Organized by",
+    "Price": "Price",
+    "Get Tickets": "Get Tickets",
+    "Share Event": "Share Event",
+    "Secure Checkout": "Secure Checkout",
+    "Checkout Description": "All transactions are encrypted and processed securely by Stripe."
   }
 }

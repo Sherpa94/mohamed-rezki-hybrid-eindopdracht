@@ -11,5 +11,14 @@
     "View All": "voir tous",
     "Powerful tools for every organizer": "Des outils efficaces pour chaque organisateur",
     "Everything you need to sell tickets, manage attendees, and grow your audience": "Toutes les informations dont vous avez besoin pour vendre des billets, gérer les participants et élargir votre audience"
+  },
+  "Details": {
+    "About this event": "À propos de cet événement",
+    "Organized by": "Organisé par",
+    "Price": "Prix",
+    "Get Tickets": "Obtenir des billets",
+    "Share Event": "Partager l'événement",
+    "Secure Checkout": "Paiement sécurisé",
+    "Checkout Description": "Toutes les transactions sont cryptées et traitées en toute sécurité par Stripe."
   }
 }

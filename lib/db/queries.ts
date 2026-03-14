@@ -28,6 +28,27 @@ export async function getFeaturedEvents(limit = 6) {
 }
 
 /**
+ * // LEARN: Fetching a single record by its unique slug.
+ * This is used for the dynamic [slug] route.
+ */
+export async function getEventBySlug(slug: string) {
+  try {
+    const result = await db.query.events.findFirst({
+      where: (events, { eq }) => eq(events.slug, slug),
+      with: {
+        organizer: true,
+      },
+    });
+
+    return result || null;
+  } catch (error) {
+    console.error('Failed to fetch event by slug:', error);
+    return null;
+  }
+}
+
+
+/**
  * // LEARN: Inferred TypeScript types from our schema.
  * This ensures the UI is always in sync with our DB structure.
  */
