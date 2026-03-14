@@ -1,56 +1,39 @@
-import Link from "next/link";
+/**
+ * // SHARED COMPONENT — pure presentational, no data fetching
+ */
+import { Link } from "@/i18n/routing";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, Users } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 import { formatEventDate, formatPrice } from "@/lib/format";
-
-// Define the Event type here instead of importing from the DB schema
-export interface Event {
-    id: string;
-    slug: string;
-    title: string;
-    description: string;
-    date: string;
-    location: string;
-    imageUrl?: string;
-    category: string;
-    capacity: number;
-    ticketsSold: number;
-    priceInCents: number;
-}
+import { type EventWithOrganizer } from "@/lib/db/queries";
 
 interface EventCardProps {
-    event: Event;
+    event: EventWithOrganizer;
 }
 
 export function EventCard({ event }: EventCardProps) {
-    const spotsLeft = event.capacity - event.ticketsSold;
-    const isSoldOut = spotsLeft <= 0;
-
+    // LEARN: We use the real DB property 'price' which is in cents.
+    // Some mock fields like 'capacity' or 'ticketsSold' aren't in our schema yet,
+    // so we'll remove them or add them to the schema later if needed.
+    
     return (
         <Link href={`/events/${event.slug}`} className="group block">
             <Card className="overflow-hidden border border-border bg-card transition-all duration-200 hover:shadow-lg hover:border-primary/20">
-                <div className="relative aspect-[16/9] bg-muted overflow-hidden">
-                    {event.imageUrl ? (
-                        // mock data uses external images from Unsplash, switching to <Image> right now will cause a runtime error
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                            src={event.imageUrl}
-                            alt={event.title}
-                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                    ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-primary/5">
-                            <Calendar className="h-12 w-12 text-primary/30" aria-hidden="true" />
-                        </div>
-                    )}
+                <div className="relative aspect-video bg-muted overflow-hidden">
+                    {/* // LEARN: In a real app, we'd use Next.js <Image> component with configured domains. */}
+                    <div className="flex h-full w-full items-center justify-center bg-primary/5">
+                        <Calendar className="h-12 w-12 text-primary/30" aria-hidden="true" />
+                    </div>
                     <div className="absolute right-3 top-3 flex gap-2">
+                        {/*category field later*/}
                         <Badge variant="secondary" className="bg-background/90 text-foreground backdrop-blur-sm">
-                            {event.category}
+                            Event
                         </Badge>
-                        {isSoldOut && (
-                            <Badge variant="destructive">Sold Out</Badge>
-                        )}
+                        {/*soldout boolian later*/}
+                        {/*{isSoldOut && (*/}
+                        {/*    <Badge variant="destructive">Sold Out</Badge>*/}
+                        {/*)}*/}
                     </div>
                 </div>
                 <CardContent className="flex flex-col gap-3 p-5">
@@ -71,18 +54,19 @@ export function EventCard({ event }: EventCardProps) {
                             <MapPin className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
                             <span className="truncate">{event.location}</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <Users className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
-                            <span>
-                {isSoldOut
-                    ? "Sold out"
-                    : `${spotsLeft} spot${spotsLeft === 1 ? "" : "s"} left`}
-              </span>
-                        </div>
+                        {/*cout the lefty tickets for later*/}
+              {/*          <div className="flex items-center gap-2">*/}
+              {/*              <Users className="h-4 w-4 flex-shrink-0" aria-hidden="true" />*/}
+              {/*              <span>*/}
+              {/*  {isSoldOut*/}
+              {/*      ? "Sold out"*/}
+              {/*      : `${spotsLeft} spot${spotsLeft === 1 ? "" : "s"} left`}*/}
+              {/*</span>*/}
+              {/*          </div>*/}
                     </div>
                     <div className="flex items-center justify-between border-t border-border pt-3">
                         <span className="text-lg font-bold text-foreground">
-                          {formatPrice(event.priceInCents)}
+                          {formatPrice(event.price)}
                         </span>
                         <span className="text-sm font-medium text-primary group-hover:underline">
                           View Details
