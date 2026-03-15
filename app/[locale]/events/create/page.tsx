@@ -5,6 +5,7 @@
 'use client';
 
 import { useActionState } from 'react';
+import { useLocale } from 'next-intl';
 import { createEvent, FormState } from '@/lib/actions/events';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -15,10 +16,13 @@ import { Calendar, MapPin, DollarSign, Type, AlignLeft } from 'lucide-react';
 import Link from 'next/link';
 
 export default function CreateEventPage() {
+  const locale = useLocale();
   const initialState: FormState = { message: null, errors: {} };
   
-  // LEARN: 'useActionState' handles the pending status and result of the Server Action.
-  const [state, formAction, isPending] = useActionState(createEvent, initialState);
+  // LEARN: We bind the 'locale' as the first argument to the Server Action.
+  // This is a standard pattern for passing extra data to actions.
+  const createEventWithLocale = createEvent.bind(null, locale);
+  const [state, formAction, isPending] = useActionState(createEventWithLocale, initialState);
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">

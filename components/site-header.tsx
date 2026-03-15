@@ -2,9 +2,10 @@ import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { Ticket } from "lucide-react";
 import { MobileNav } from "@/components/mobile-nav";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export function SiteHeader() {
-    // or guest
+    // or guest, fix after auth
     const user = { role: "organizer" };
 
     return (
@@ -39,6 +40,7 @@ export function SiteHeader() {
                     </nav>
                 </div>
                 <div className="flex items-center gap-3">
+                    <LanguageSwitcher />
                     <div className="flex items-center gap-2">
                         <Button variant="ghost" size="sm" asChild className="hidden sm:inline-flex">
                             <Link href="/sign-in">Sign In</Link>

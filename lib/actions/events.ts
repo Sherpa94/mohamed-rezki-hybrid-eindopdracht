@@ -4,7 +4,7 @@ import { db } from '@/lib/db';
 import { events } from '@/lib/db/schema';
 import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
+import { redirect } from '@/i18n/routing';
 
 /**
  * // LEARN: Zod validation schema.
@@ -35,9 +35,13 @@ export type FormState = {
 /**
  * // SERVER ACTION — handles the form submission securely
  * // LEARN: In Next.js 16 (React 19), Server Actions are the standard way
- * to mutate data. 'useActionState' (next step) will handle the state.
+ * to mutate data. We pass the 'locale' so the redirect knows where to go.
  */
-export async function createEvent(prevState: FormState, formData: FormData) {
+export async function createEvent(
+  locale: string, 
+  prevState: FormState | undefined, 
+  formData: FormData
+): Promise<FormState> {
   // 1. Validate form fields using Zod
   const validatedFields = CreateEventSchema.safeParse({
     title: formData.get('title'),
@@ -93,5 +97,10 @@ export async function createEvent(prevState: FormState, formData: FormData) {
   revalidatePath('/');
   
   // 7. Redirect to the home page (or the new event page)
-  redirect('/');
+  // LEARN: next-intl's redirect requires the locale in Server Actions.
+  redirect({ href: '/', locale });
+  
+  // LEARN: This return is unreachable because redirect() throws an error.
+  // We add it only to satisfy TypeScript's 'Promise<FormState>' return type.
+  return { message: 'Success' };
 }
